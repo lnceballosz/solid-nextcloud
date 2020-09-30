@@ -276,7 +276,7 @@ class ServerController extends Controller {
 		$registration = array(
 			'redirect_uris' => array('https://solid.community/.well-known/solid/login'), // FIXME: grab from registration request
 			'response_types' => array("id_token token"),
-			'grant_types' => array("implicit"),
+			'grant_types' => array("implicit", "authorization_code"),
 			'application_type' => 'web',
 			'id_token_signed_response_alg' => "RS256",
 			'token_endpoint_auth_method' => 'client_secret_basic',
