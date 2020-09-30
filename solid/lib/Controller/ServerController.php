@@ -170,7 +170,7 @@ class ServerController extends Controller {
 		$getVars['scope'] = "openid";
 		
 		if (!isset($getVars['redirect_uri'])) {
-			$getVars['redirect_uri'] = 'https://solid.community/.well-known/solid/login'; // FIXME: a default could be in the registration, but if none is there we should probably just fail with a 400 bad request;
+			$getVars['redirect_uri'] = 'http://localhost:3001'; // FIXME: a default could be in the registration, but if none is there we should probably just fail with a 400 bad request;
 		}
 		$request = \Laminas\Diactoros\ServerRequestFactory::fromGlobals($_SERVER, $getVars, $_POST, $_COOKIE, $_FILES);
 		$response = new \Laminas\Diactoros\Response();
@@ -369,6 +369,7 @@ class ServerController extends Controller {
 			// FIXME: use the redirect URIs as indicated by the client;
 			$clientRedirectUris = array(
 				$this->urlGenerator->getAbsoluteURL($this->urlGenerator->linkToRoute("solid.server.token")),
+				'http://localhost:3001/',
 				'https://solid.community/.well-known/solid/login',
 				'http://localhost:3001/redirect',
 				'http://localhost:3002/redirect'
